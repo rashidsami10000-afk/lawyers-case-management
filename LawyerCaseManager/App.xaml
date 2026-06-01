@@ -1,0 +1,109 @@
+<Application x:Class="LawyerCaseManager.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!-- Material-inspired palette: Navy, White, Gray -->
+        <Color x:Key="NavyColor">#FF1A237E</Color>
+        <Color x:Key="NavyDarkColor">#FF0D1642</Color>
+        <Color x:Key="AccentLightColor">#FF3949AB</Color>
+        <Color x:Key="SurfaceGrayColor">#FFF5F5F5</Color>
+        <Color x:Key="BorderGrayColor">#FFBDBDBD</Color>
+        <Color x:Key="TextGrayColor">#FF616161</Color>
+
+        <SolidColorBrush x:Key="NavyBrush" Color="{StaticResource NavyColor}"/>
+        <SolidColorBrush x:Key="NavyDarkBrush" Color="{StaticResource NavyDarkColor}"/>
+        <SolidColorBrush x:Key="AccentLightBrush" Color="{StaticResource AccentLightColor}"/>
+        <SolidColorBrush x:Key="SurfaceGrayBrush" Color="{StaticResource SurfaceGrayColor}"/>
+        <SolidColorBrush x:Key="BorderGrayBrush" Color="{StaticResource BorderGrayColor}"/>
+        <SolidColorBrush x:Key="TextGrayBrush" Color="{StaticResource TextGrayColor}"/>
+        <SolidColorBrush x:Key="WhiteBrush" Color="White"/>
+
+        <FontFamily x:Key="AppFont">Segoe UI</FontFamily>
+
+        <Style TargetType="Window">
+            <Setter Property="FontFamily" Value="{StaticResource AppFont}"/>
+            <Setter Property="Background" Value="{StaticResource SurfaceGrayBrush}"/>
+            <Setter Property="ResizeMode" Value="CanResize"/>
+            <Setter Property="WindowStyle" Value="SingleBorderWindow"/>
+        </Style>
+
+        <Style x:Key="SidebarButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Padding" Value="16,12"/>
+            <Setter Property="Margin" Value="4,2"/>
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="border" Background="{TemplateBinding Background}" CornerRadius="4" Padding="{TemplateBinding Padding}">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalAlignment="Center"/>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource AccentLightBrush}"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter TargetName="border" Property="Background" Value="{StaticResource NavyDarkBrush}"/>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="SidebarButtonActiveStyle" TargetType="Button" BasedOn="{StaticResource SidebarButtonStyle}">
+            <Setter Property="Background" Value="{StaticResource AccentLightBrush}"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="PrimaryButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource NavyBrush}"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Padding" Value="14,8"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+        </Style>
+
+        <Style x:Key="SectionHeaderStyle" TargetType="TextBlock">
+            <Setter Property="FontSize" Value="22"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="Foreground" Value="{StaticResource NavyBrush}"/>
+            <Setter Property="Margin" Value="0,0,0,12"/>
+        </Style>
+
+        <Style x:Key="FieldLabelStyle" TargetType="TextBlock">
+            <Setter Property="Foreground" Value="{StaticResource TextGrayBrush}"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="0,8,0,4"/>
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderGrayBrush}"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style TargetType="ComboBox">
+            <Setter Property="Padding" Value="8,6"/>
+            <Setter Property="Background" Value="White"/>
+        </Style>
+
+        <Style TargetType="DataGrid">
+            <Setter Property="AutoGenerateColumns" Value="False"/>
+            <Setter Property="IsReadOnly" Value="True"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="HeadersVisibility" Value="Column"/>
+            <Setter Property="GridLinesVisibility" Value="Horizontal"/>
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="BorderBrush" Value="{StaticResource BorderGrayBrush}"/>
+            <Setter Property="RowBackground" Value="White"/>
+            <Setter Property="AlternatingRowBackground" Value="{StaticResource SurfaceGrayBrush}"/>
+        </Style>
+    </Application.Resources>
+</Application>
